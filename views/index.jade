@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  #embedHere
+  script.
+    var embed = new Apiary.Embed({
+    subdomain: '#{name}',
+    element: '#embedHere'
+    });
