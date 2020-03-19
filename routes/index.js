@@ -25,7 +25,7 @@ router.get('/apiary/:name/embed', (req, res) => {
     title: '',
     author_name: 'Rebecca Vest',
     author_url: 'http://www.github.com/idahogurl',
-    html: `<iframe src="https://apiary-embed.herokuapp.com/apiary/${req.params.name}"></iframe>`,
+    html: `<iframe src="https://notion-embed.herokuapp.com/apiary/${req.params.name}"></iframe>`,
   });
 });
 
@@ -45,7 +45,7 @@ router.get('/github/embed', (req, res) => {
     title: '',
     author_name: 'Rebecca Vest',
     author_url: 'http://www.github.com/idahogurl',
-    html: `<iframe src="https://apiary-embed.herokuapp.com/github/?permalink=${req.query.permalink}"></iframe>`,
+    html: `<iframe src="https://notion-embed.herokuapp.com/github/?permalink=${req.query.permalink}"></iframe>`,
   });
 });
 
