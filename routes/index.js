@@ -1,4 +1,5 @@
 const express = require('express');
+const url = require('url');
 const getContents = require('../lib/github');
 
 require('dotenv').config();
@@ -10,11 +11,10 @@ router.get('/', (req, res) => {
   res.render('index');
 });
 
-router.get('/apiary/:name', (req, res) => {
-  res.render('index', { name: req.params.name });
-});
+router.get('/apiary/embed', (req, res) => {
+  const parsed = url.parse(req.query.url);
 
-router.get('/apiary/:name/embed', (req, res) => {
+  const [name] = parsed.hostname.split('.');
   res.json({
     version: '1.0',
     type: 'rich',
@@ -25,12 +25,16 @@ router.get('/apiary/:name/embed', (req, res) => {
     title: '',
     author_name: 'Rebecca Vest',
     author_url: 'http://www.github.com/idahogurl',
-    html: `<iframe src="https://notion-embed.herokuapp.com/apiary/${req.params.name}"></iframe>`,
+    html: `<iframe src="https://notion-embed.herokuapp.com/apiary/${name}"></iframe>`,
   });
 });
 
+router.get('/apiary/:name', (req, res) => {
+  res.render('index', { name: req.params.name });
+});
+
 router.get('/github', async (req, res) => {
-  const content = getContents(req.query.permalink);
+  const content = getContents(req.query.url);
   res.render('github', content);
 });
 
@@ -45,7 +49,7 @@ router.get('/github/embed', (req, res) => {
     title: '',
     author_name: 'Rebecca Vest',
     author_url: 'http://www.github.com/idahogurl',
-    html: `<iframe src="https://notion-embed.herokuapp.com/github/?permalink=${req.query.permalink}"></iframe>`,
+    html: `<iframe src="https://notion-embed.herokuapp.com/github/?permalink=${req.query.url}"></iframe>`,
   });
 });
 
