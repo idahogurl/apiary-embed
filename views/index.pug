@@ -3,12 +3,9 @@ html
   head
     script(src='https://api.apiary.io/seeds/embed.js')
   body
-    block content
-
-block content
-  #embedHere
-  script.
-    var embed = new Apiary.Embed({
-    subdomain: '#{name}',
-    element: '#embedHere'
-    });
+    #embedHere
+    script.
+      var embed = new Apiary.Embed({
+      subdomain: '#{name}',
+      element: '#embedHere'
+      });
