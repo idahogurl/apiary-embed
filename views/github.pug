@@ -3,11 +3,10 @@ html
   head
     link(href='../stylesheets/main.css' rel='stylesheet')
     link(href='../stylesheets/prism.css' rel='stylesheet')
-    link(href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet')
   body
-    i(class='fa fa-file')
+    img(src='../images/code-file.svg')
     | 
-    a(href='' + htmlUrl + lineNumbers target='_blank')
+    a(href='' + htmlUrl target='_blank')
         |  #{file}
     #lines
         pre
@@ -15,7 +14,7 @@ html
                 | #{lines}
 
     
-    i(class='fa fa-github')
+    img(src='../images/github.svg')
     | 
     a(href='https://www.github.com/' + owner + '/' + repo target='_blank')
             | #{owner}/#{repo}

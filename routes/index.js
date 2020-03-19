@@ -1,6 +1,5 @@
 const express = require('express');
 const url = require('url');
-const qs = require('query-string');
 const getContents = require('../lib/github');
 
 const router = express.Router();
@@ -48,7 +47,7 @@ router.get('/github/embed', (req, res) => {
     title: '',
     author_name: 'Rebecca Vest',
     author_url: 'http://www.github.com/idahogurl',
-    html: `<iframe src="https://notion-embed.herokuapp.com/github/?${qs.stringify({ url: req.query.url })}" width="425" height="344"></iframe>`,
+    html: `<iframe src="https://notion-embed.herokuapp.com/github/?url=${req.query.url}" width="425" height="344"></iframe>`,
   });
 });
 
