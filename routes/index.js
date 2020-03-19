@@ -2,8 +2,6 @@ const express = require('express');
 const url = require('url');
 const getContents = require('../lib/github');
 
-require('dotenv').config();
-
 const router = express.Router();
 
 /* GET home page. */
@@ -49,7 +47,7 @@ router.get('/github/embed', (req, res) => {
     title: '',
     author_name: 'Rebecca Vest',
     author_url: 'http://www.github.com/idahogurl',
-    html: `<iframe src="https://notion-embed.herokuapp.com/github/?permalink=${req.query.url}" width="425" height="344"></iframe>`,
+    html: `<iframe src="https://notion-embed.herokuapp.com/github/?url=${req.query.url}" width="425" height="344"></iframe>`,
   });
 });
 
